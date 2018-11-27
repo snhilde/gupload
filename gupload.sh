@@ -23,7 +23,7 @@ START_TIME=`/usr/bin/date +%s`
 	
 function get_token {
 	ACCESS_JSON=`/usr/bin/curl --silent --data "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&refresh_token=$REFRESH_TOKEN&grant_type=refresh_token" https://accounts.google.com/o/oauth2/token`
-	ACCESS_TOKEN=`/usr/bin/echo $ACCESS_JSON | /usr/bin/grep -o '"[a-Z|0-9|_-.]*"' | /usr/bin/head -2 | /usr/bin/tail -1 | /usr/bin/tr -d \"`
+	ACCESS_TOKEN=`/usr/bin/echo $ACCESS_JSON | /usr/bin/grep -o '"[a-Z|0-9|_.-]*"' | /usr/bin/head -2 | /usr/bin/tail -1 | /usr/bin/tr -d \"`
 	if [ -n $ACCESS_TOKEN ]; then
 		echo "Successfully received access token"
 	else
